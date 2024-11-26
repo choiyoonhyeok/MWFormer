@@ -1,7 +1,6 @@
-# MWFormer
 # [TIP]  MWFormer: Multi-Weather Image Restoration Using Degradation-Aware Transformers 
 
-This is a PyTorch implementation of the paper [MWFormer: Multi-Weather Image Restoration Using Degradation-Aware Transformers] published in TIP.
+This is a PyTorch implementation of the paper [MWFormer: Multi-Weather Image Restoration Using Degradation-Aware Transformers] published in IEEE TIP.
 
 *__Notice__: This repo is still __working in progress__.*
 

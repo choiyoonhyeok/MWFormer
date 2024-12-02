@@ -18,8 +18,8 @@ from model.style_filter64 import StyleFilter_Top
 parser = argparse.ArgumentParser(description='Hyper-parameters for network')
 parser.add_argument('-val_batch_size', help='Set the validation/test batch size', default=1, type=int)
 parser.add_argument('-seed', help='set random seed', default=19, type=int)
-parser.add_argument("-restore-from-stylefilter", help='the weights of feature extraction network', type=str, default='./checkpoints/test_model/style_best_all')
-parser.add_argument('-restore-from-backbone', help='the weights of the image restoration backbone', default='./checkpoints/test_model/style_best_all', type=str)     #default
+parser.add_argument("-restore-from-stylefilter", help='the weights of feature extraction network', type=str, default='./checkpoints/test_model/backbone')
+parser.add_argument('-restore-from-backbone', help='the weights of the image restoration backbone', default='./checkpoints/test_model/style_filter', type=str)     
 parser.add_argument('-val_data_dir', default='./data/test/', type=str)
 parser.add_argument('-val_filename', default='snowtest100k_L.txt', type=str)
 args = parser.parse_args()
@@ -47,35 +47,34 @@ print(device)
 # --- Validation data loader --- #
 val_data_loader = DataLoader(ValData(val_data_dir,val_filename), batch_size=val_batch_size, shuffle=False, num_workers=8)
 
-# --- Define the network --- #
+# --- the network backbone --- #
 net = Network_top().cuda()
 net = nn.DataParallel(net, device_ids=device_ids)
-
-######### best ############
-#for model trained on cpu
-weights = torch.load(args.restore_from_backbone, map_location=lambda storage, loc: storage).module.state_dict()
-weights_dict = {}
-for k, v in weights.items():
-    new_k = 'module.' + k
-    weights_dict[new_k] = v
+# weights = torch.load(args.restore_from_backbone, map_location=lambda storage, loc: storage).module.state_dict()
+# weights_dict = {}
+# for k, v in weights.items():
+#     new_k = 'module.' + k.replace('EncDec_film64_hyperW_conv', 'EncDec').replace('Transweather', 'Network_top')
+#     weights_dict[new_k] = v
+weights_dict = torch.load(args.restore_from_backbone)
 net.load_state_dict(weights_dict)
+net.eval()
 
-#instantiate style discriminator
+# --- the style filter --- #
 StyleFilter = StyleFilter_Top() 
 StyleFilter.to(device)
 StyleFilter = nn.DataParallel(StyleFilter, device_ids=device_ids)
-restore = torch.load(args.restore_from_stylefilter, map_location=lambda storage, loc: storage).module.state_dict()
-weights_dict = {}
-for k, v in restore.items():
-    new_k = 'module.' + k
-    weights_dict[new_k] = v
+# restore = torch.load(args.restore_from_stylefilter, map_location=lambda storage, loc: storage).module.state_dict()
+# weights_dict = {}
+# for k, v in restore.items():
+#     new_k = 'module.' + k
+#     weights_dict[new_k] = v
+weights_dict = torch.load(args.restore_from_stylefilter)
 StyleFilter.load_state_dict(weights_dict)
 for param in StyleFilter.parameters():
     param.require_grad = False
 StyleFilter.eval()
 
 # --- Use the evaluation model in testing --- #
-net.eval()
 print('--- Testing starts! ---')
 start_time = time.time()
 with torch.no_grad():

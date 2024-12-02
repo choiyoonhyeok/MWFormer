@@ -23,10 +23,14 @@ The architecture of MWFormer. The main image processing network consists of a Tr
 In addition to the default architecture, we also developed two test-time variants applied in special cases. To conduct a single weather-type restoration, the feature extraction network is replaced by a fixed feature vector. To conduct hybrid weather restoration that were unseen during training, the image processing network is cascaded to remove degradations sequentially, stage by stage.
 
 ## Results
+### Results on real world images
   ![Fig](./figs/results.png)
+### Results on hybrid-weather degradations unseen during training
+  ![Fig](./figs/hybrid.png)
+
 
 ## Pre-Trained Models
-Uploading soon
+The weights of MWFormer-real, MWFormer-L and the pre-trained feature extraction network can can be downloaded through this Google Drive [link](https://drive.google.com/file/d/12tP7I1wm7sSI7ZlLBZz78tlrIV-JhsWP/view?usp=sharing).
 
 ## Train
 First, please download the Allweather dataset and its filelist. The download link and dataset format can be found in this codebase: [link](https://github.com/jeya-maria-jose/TransWeather). 

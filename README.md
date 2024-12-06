@@ -32,10 +32,10 @@ Click on the screenshots to play or download the video.
 
 <div style="display: flex; justify-content: space-evenly; width: 100%;">
   <a href="https://drive.google.com/file/d/1NI3mTAAhlk7zAvlHjxe_Dl7OTW4NMLVx/view?usp=drive_link">
-    <img src="./figs/screenshot1.png" alt="video1" style="height: auto; width: 85%;object-fit: cover;">
+    <img src="./figs/screenshot1.png" alt="video1" style="height: auto; width: 40%;object-fit: cover;">
   </a>
   <a href="https://drive.google.com/file/d/1qtOtD6yoJ7OxM6IWbAai1s-AVtSvJxDV/view?usp=drive_link">
-    <img src="./figs/screenshot2.png" alt="video2" style="height: auto; width: 85%;object-fit: cover;">
+    <img src="./figs/screenshot2.png" alt="video2" style="height: auto; width: 25%;object-fit: cover;">
   </a>
 </div>
 

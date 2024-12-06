@@ -28,15 +28,16 @@ In addition to the default architecture, we also developed two test-time variant
 ### Results on hybrid-weather degradations unseen during training
   ![Fig](./figs/hybrid.png)
 ### Downstream-task-driven video quality evaluation
-<div style="display: flex; justify-content: space-evenly; width: 100%;">
-  <video controls style="height: auto; width: 47%;">
-    <source src="figs/1204.mp4" type="video/mp4">
-  </video>
-  <video controls style="height: auto; width: 30%;">
-    <source src="figs/rain-1204.mp4" type="video/mp4">
-  </video>
-</div>
+Click on the screenshots to play or download the video.
 
+<div style="display: flex; justify-content: space-evenly; width: 100%;">
+  <a href="https://drive.google.com/file/d/1NI3mTAAhlk7zAvlHjxe_Dl7OTW4NMLVx/view?usp=drive_link">
+    <img src="./figs/screenshot1.png" alt="video1" style="height: auto; width: 85%;object-fit: cover;">
+  </a>
+  <a href="https://drive.google.com/file/d/1qtOtD6yoJ7OxM6IWbAai1s-AVtSvJxDV/view?usp=drive_link">
+    <img src="./figs/screenshot2.png" alt="video2" style="height: auto; width: 85%;object-fit: cover;">
+  </a>
+</div>
 
 ## Pre-Trained Models
 The weights of MWFormer-real, MWFormer-L and the pre-trained feature extraction network can can be downloaded through this Google Drive [link](https://drive.google.com/file/d/12tP7I1wm7sSI7ZlLBZz78tlrIV-JhsWP/view?usp=sharing).

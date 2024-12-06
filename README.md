@@ -27,6 +27,15 @@ In addition to the default architecture, we also developed two test-time variant
   ![Fig](./figs/results.png)
 ### Results on hybrid-weather degradations unseen during training
   ![Fig](./figs/hybrid.png)
+### Downstream-task-driven video quality evaluation
+<div style="display: flex; justify-content: space-evenly; width: 100%;">
+  <video controls style="height: auto; width: 47%;">
+    <source src="figs/1204.mp4" type="video/mp4">
+  </video>
+  <video controls style="height: auto; width: 30%;">
+    <source src="figs/rain-1204.mp4" type="video/mp4">
+  </video>
+</div>
 
 
 ## Pre-Trained Models
